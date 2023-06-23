@@ -14,6 +14,6 @@ public class BancoContext : DbContext
             options.EnableRetryOnFailure());
     }
 
-    public DbSet<ProdutoDetalhadoModel> ProdutoDetalhado { get; set; }
+    public DbSet<ProdutoModel> Produto { get; set; }
 
 }
