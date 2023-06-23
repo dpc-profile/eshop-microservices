@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  eshop-app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+    volumes:
+      # Update this to wherever you want VS Code to mount the folder of your project
+      - .:/src:cached

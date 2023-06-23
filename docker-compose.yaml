@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  eshop-app:
+    build: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - .:/src
+    networks:
+      eshop-bridge:
+        ipv4_address: 170.25.0.10
+  
+  catalog-api-db:
+    container_name: catalog-db
+    image: mcr.microsoft.com/mssql/server:2022-CU5-ubuntu-20.04
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: 021X9bWU9nPt
+      MSSQL_PID: Standard
+    ports:
+      - 1433:1433
+    volumes:
+      - catalog-data:/var/opt/mssql
+    networks:
+      eshop-bridge:
+        ipv4_address: 170.25.0.11
+    
+volumes:
+  catalog-data:
+
+networks:
+  eshop-bridge:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 170.25.0.0/16
+          gateway: 170.25.0.1
