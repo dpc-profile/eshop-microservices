@@ -22,7 +22,8 @@
         "johnpapa.vscode-peacock",
         "adrianwilczynski.asp-net-core-snippet-pack",
         "adrianwilczynski.asp-net-core-switcher",
-        "formulahendry.dotnet-test-explorer"
+        "adrianwilczynski.add-reference",
+        "formulahendry.dotnet-test-explorer"        
       ]
     }
   }
