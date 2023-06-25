@@ -39,6 +39,6 @@ public class APICallTests : IClassFixture<WebApplicationFactory<Program>>
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         var content = await response.Content.ReadAsStringAsync();
-
+        Assert.NotNull(content);
     }
 }
