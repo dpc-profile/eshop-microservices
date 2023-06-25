@@ -24,11 +24,11 @@ namespace catalog_api.Migrations
 
             modelBuilder.Entity("catalog_api.Models.ImagemModel", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ImagemBase64")
                         .IsRequired()
@@ -39,7 +39,6 @@ namespace catalog_api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProdutoId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("ProdutoModelId")
@@ -60,6 +59,10 @@ namespace catalog_api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double?>("DescontoPorcentagem")
                         .HasColumnType("float");
 
@@ -74,8 +77,8 @@ namespace catalog_api.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<double?>("PrecoDesconto")
-                        .HasColumnType("float");
+                    b.Property<decimal?>("PrecoDesconto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");

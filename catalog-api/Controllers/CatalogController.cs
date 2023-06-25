@@ -33,4 +33,10 @@ public class CatalogController : ControllerBase
         
         return produtoList;
     }
+
+    [HttpPost]
+    public void CreateProduto([FromBody] ProdutoModel produto)
+    {
+
+    }
 }

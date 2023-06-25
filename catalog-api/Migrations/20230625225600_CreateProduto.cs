@@ -18,9 +18,10 @@ namespace catalog_api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Categoria = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PrecoDesconto = table.Column<double>(type: "float", nullable: true),
+                    PrecoDesconto = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     DescontoPorcentagem = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
@@ -34,7 +35,7 @@ namespace catalog_api.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProdutoId = table.Column<int>(type: "int", nullable: false),
+                    ProdutoId = table.Column<int>(type: "int", nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImagemBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProdutoModelId = table.Column<int>(type: "int", nullable: true)

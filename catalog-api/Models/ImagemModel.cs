@@ -3,15 +3,15 @@ namespace catalog_api.Models;
 [Table("Imagens")]
 public class ImagemModel
 {
-    [Required]
-    public int? Id { get; set;}
+    [Key]
+    public int Id { get; init;}
+
+    [ForeignKey("Produto")]
+    public int? ProdutoId { get; init;}
 
     [Required]
-    public int? ProdutoId { get; set;}
+    public string? Nome { get; init;}
 
     [Required]
-    public string? Nome { get; set;}
-
-    [Required]
-    public string? ImagemBase64{ get; set;}
+    public string? ImagemBase64{ get; init;}
 }
