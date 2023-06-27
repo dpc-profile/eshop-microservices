@@ -27,7 +27,8 @@ public class ProdutoModel
 
     [Column(TypeName = "decimal(18,2)")]
     public decimal? PrecoDesconto { get; init; }
-    public double? DescontoPorcentagem { get; init; }
+
+    public int? DescontoPorcentagem { get; init; }
 
     public ProdutoSimplificado ProdutoSimplificado() => new()
     {

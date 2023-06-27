@@ -16,15 +16,16 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-dotnettools.csdevkit",
-        "ms-dotnettools.csharp",
-        "ms-dotnettools.vscodeintellicode-csharp",
-        "johnpapa.vscode-peacock",
-        "adrianwilczynski.asp-net-core-snippet-pack",
-        "adrianwilczynski.asp-net-core-switcher",
-        "adrianwilczynski.add-reference",
-        "formulahendry.dotnet-test-explorer"        
-      ]
+		"ms-dotnettools.csdevkit",
+		"ms-dotnettools.csharp",
+		"ms-dotnettools.vscodeintellicode-csharp",
+		"johnpapa.vscode-peacock",
+		"adrianwilczynski.asp-net-core-snippet-pack",
+		"adrianwilczynski.asp-net-core-switcher",
+		"adrianwilczynski.add-reference",
+		"formulahendry.dotnet-test-explorer",
+		"humao.rest-client"
+	]
     }
   }
 }

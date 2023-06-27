@@ -63,8 +63,8 @@ namespace catalog_api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("DescontoPorcentagem")
-                        .HasColumnType("float");
+                    b.Property<int?>("DescontoPorcentagem")
+                        .HasColumnType("int");
 
                     b.Property<string>("Descricao")
                         .IsRequired()

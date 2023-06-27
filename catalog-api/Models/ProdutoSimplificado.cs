@@ -13,5 +13,5 @@ public class ProdutoSimplificado
     public decimal Preco { get; set; }
 
     public decimal? PrecoDesconto { get; set; }
-    public double? DescontoPorcentagem { get; set; }
+    public int? DescontoPorcentagem { get; set; }
 }

@@ -12,7 +12,7 @@ using catalog_api.Models.Data;
 namespace catalog_api.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20230625225600_CreateProduto")]
+    [Migration("20230627142347_CreateProduto")]
     partial class CreateProduto
     {
         /// <inheritdoc />
@@ -66,8 +66,8 @@ namespace catalog_api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("DescontoPorcentagem")
-                        .HasColumnType("float");
+                    b.Property<int?>("DescontoPorcentagem")
+                        .HasColumnType("int");
 
                     b.Property<string>("Descricao")
                         .IsRequired()

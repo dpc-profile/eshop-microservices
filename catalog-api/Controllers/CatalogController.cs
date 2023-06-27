@@ -34,9 +34,30 @@ public class CatalogController : ControllerBase
         return produtoList;
     }
 
+    //POST api/v1/[controller]/items
+    [Route("items")]
     [HttpPost]
-    public void CreateProduto([FromBody] ProdutoModel produto)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult> CriarProdutoAsync([FromBody] ProdutoModel produto)
     {
+        try
+        {
+            // Popular um objeto do tipo ProdutoModel com as informações de produto
+
+            // Chamar CriarProdutoAsync de ProdutoServices
+
+            // Cria a URI
+
+            // Passa a URI para o return CreatedAtAction
+            return CreatedAtAction("stringURI", new {id = produto.Id});
+        }
+        catch (Exception)
+        {
+            
+            throw;
+        }
+        
 
     }
 }

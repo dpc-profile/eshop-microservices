@@ -22,7 +22,7 @@ namespace catalog_api.Migrations
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PrecoDesconto = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    DescontoPorcentagem = table.Column<double>(type: "float", nullable: true)
+                    DescontoPorcentagem = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
