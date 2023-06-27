@@ -6,7 +6,8 @@ public class ImagemModel
     [Key]
     public int Id { get; init;}
 
-    [ForeignKey("Produto")]
+    [ForeignKey(nameof(ProdutoModel))]
+    [Column("ProdutoId")]
     public int? ProdutoId { get; init;}
 
     [Required]
@@ -14,4 +15,6 @@ public class ImagemModel
 
     [Required]
     public string? ImagemBase64{ get; init;}
+
+    public ProdutoModel? ProdutoModel {get; set;}
 }

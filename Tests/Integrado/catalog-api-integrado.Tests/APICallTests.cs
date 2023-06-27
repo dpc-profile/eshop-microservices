@@ -1,3 +1,5 @@
+using catalog_api;
+
 namespace catalog_api_integrado.Tests;
 
 public class APICallTests : IClassFixture<WebApplicationFactory<Program>>

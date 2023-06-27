@@ -12,7 +12,7 @@ using catalog_api.Models.Data;
 namespace catalog_api.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20230627142347_CreateProduto")]
+    [Migration("20230627192751_CreateProduto")]
     partial class CreateProduto
     {
         /// <inheritdoc />
@@ -42,14 +42,12 @@ namespace catalog_api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ProdutoId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProdutoModelId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("ProdutoId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoModelId");
+                    b.HasIndex("ProdutoId");
 
                     b.ToTable("Imagens");
                 });
@@ -93,9 +91,11 @@ namespace catalog_api.Migrations
 
             modelBuilder.Entity("catalog_api.Models.ImagemModel", b =>
                 {
-                    b.HasOne("catalog_api.Models.ProdutoModel", null)
+                    b.HasOne("catalog_api.Models.ProdutoModel", "ProdutoModel")
                         .WithMany("Imagens")
-                        .HasForeignKey("ProdutoModelId");
+                        .HasForeignKey("ProdutoId");
+
+                    b.Navigation("ProdutoModel");
                 });
 
             modelBuilder.Entity("catalog_api.Models.ProdutoModel", b =>

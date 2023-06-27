@@ -1,63 +1,49 @@
+using Newtonsoft.Json;
+
 namespace catalog_api.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
 public class CatalogController : ControllerBase
 {
-    private static readonly List<ProdutoModel> produtoList = new();
-    private static readonly List<ImagemModel> imagemList = new();
+    private readonly IProdutoServices _produtoService;
+    private readonly IMapper _mapper;
+
+    public CatalogController(IProdutoServices produtoService, IMapper mapper)
+    {
+        _produtoService = produtoService;
+        _mapper = mapper;
+    }
 
     [HttpGet]
-    [Route("Ola")]
-    public List<ProdutoModel> GetProdutos()
+    [Route("items")]
+    public async Task<IEnumerable<ProdutoModel>> GetAllProdutosAsync()
     {
-        imagemList.Add(new ImagemModel()
-        {
-            Id = 1,
-            ProdutoId = 1,
-            Nome = "imagem placehold",
-            ImagemBase64 = "wryyyyyy"
-        });
-
-        ProdutoModel produto = new()
-        {
-            Id = 1,
-            Nome = "Arroz",
-            Descricao = "Pacote de arroz",
-            Preco = 10,
-            Quantidade = 432,
-            Imagens = imagemList
-        };
-
-        produtoList.Add(produto);
-        
-        return produtoList;
+        return await _produtoService.ExibirProdutosAsync();
     }
 
     //POST api/v1/[controller]/items
     [Route("items")]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-    public async Task<ActionResult> CriarProdutoAsync([FromBody] ProdutoModel produto)
+    public async Task<IActionResult> CriarProdutoAsync([FromBody] CreateProdutoDto produtoDto)
     {
         try
         {
             // Popular um objeto do tipo ProdutoModel com as informações de produto
+            ProdutoModel produto = _mapper.Map<ProdutoModel>(produtoDto);
 
             // Chamar CriarProdutoAsync de ProdutoServices
+            // await _produtoService.CriarProdutoAsync(produto);
 
             // Cria a URI
 
             // Passa a URI para o return CreatedAtAction
-            return CreatedAtAction("stringURI", new {id = produto.Id});
+            return Ok(produto.Nome);
         }
-        catch (Exception)
+        catch (Exception error)
         {
-            
-            throw;
+            return BadRequest(error);
         }
-        
-
     }
 }

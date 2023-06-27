@@ -16,7 +16,12 @@ public class ProdutoRepository : IProdutoRepository
         }
         catch (Exception)
         {
-            throw new Exception("Erro ao adicionar produto no banco de dados");
+            throw new Exception("Erro ao adicionar o produto no banco de dados");
         }
-    }    
+    }
+
+    public async Task<List<ProdutoModel>> BuscarProdutosAsync()
+    {
+        return await _bancoContext.Produto.ToListAsync();
+    }
 }

@@ -37,23 +37,22 @@ namespace catalog_api.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProdutoId = table.Column<int>(type: "int", nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImagemBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProdutoModelId = table.Column<int>(type: "int", nullable: true)
+                    ImagemBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Imagens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Imagens_Produto_ProdutoModelId",
-                        column: x => x.ProdutoModelId,
+                        name: "FK_Imagens_Produto_ProdutoId",
+                        column: x => x.ProdutoId,
                         principalTable: "Produto",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Imagens_ProdutoModelId",
+                name: "IX_Imagens_ProdutoId",
                 table: "Imagens",
-                column: "ProdutoModelId");
+                column: "ProdutoId");
         }
 
         /// <inheritdoc />

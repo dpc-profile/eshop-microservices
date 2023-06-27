@@ -16,4 +16,9 @@ public class ProdutoServices : IProdutoServices
     {
         await _produtoRepository.AdicionarAsync(produto);
     }
+
+    public async Task<List<ProdutoModel>> ExibirProdutosAsync()
+    {
+        return await _produtoRepository.BuscarProdutosAsync();
+    }
 }
