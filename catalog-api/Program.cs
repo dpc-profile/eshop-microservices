@@ -1,7 +1,3 @@
-using catalog_api.Repository;
-using catalog_api.Services;
-using catalog_api.Services.Interfaces;
-
 namespace catalog_api;
 
 public class Program

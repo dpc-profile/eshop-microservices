@@ -11,7 +11,7 @@ public class ProdutoRepository : IProdutoRepository
     {
         try
         {
-            await _bancoContext.AddAsync(produto);
+            await _bancoContext.Produto.AddAsync(produto);
             await _bancoContext.SaveChangesAsync();
         }
         catch (Exception)

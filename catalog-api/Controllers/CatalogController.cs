@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace catalog_api.Controllers;
 
 [Route("api/v1/[controller]")]
@@ -34,7 +32,7 @@ public class CatalogController : ControllerBase
             ProdutoModel produto = _mapper.Map<ProdutoModel>(produtoDto);
 
             // Chamar CriarProdutoAsync de ProdutoServices
-            // await _produtoService.CriarProdutoAsync(produto);
+            await _produtoService.CriarProdutoAsync(produto);
 
             // Cria a URI
 

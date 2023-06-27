@@ -42,9 +42,12 @@ namespace catalog_api.Migrations
                         .HasColumnType("int")
                         .HasColumnName("ProdutoId");
 
+                    b.Property<int?>("ProdutoModelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("ProdutoModelId");
 
                     b.ToTable("Imagens");
                 });
@@ -88,11 +91,9 @@ namespace catalog_api.Migrations
 
             modelBuilder.Entity("catalog_api.Models.ImagemModel", b =>
                 {
-                    b.HasOne("catalog_api.Models.ProdutoModel", "ProdutoModel")
+                    b.HasOne("catalog_api.Models.ProdutoModel", null)
                         .WithMany("Imagens")
-                        .HasForeignKey("ProdutoId");
-
-                    b.Navigation("ProdutoModel");
+                        .HasForeignKey("ProdutoModelId");
                 });
 
             modelBuilder.Entity("catalog_api.Models.ProdutoModel", b =>

@@ -1,6 +1,3 @@
-using catalog_api.Repository;
-using catalog_api.Services.Interfaces;
-
 namespace catalog_api.Services;
 
 public class ProdutoServices : IProdutoServices
@@ -20,5 +17,10 @@ public class ProdutoServices : IProdutoServices
     public async Task<List<ProdutoModel>> ExibirProdutosAsync()
     {
         return await _produtoRepository.BuscarProdutosAsync();
+    }
+
+    public Task AdicionarImagemAsync()
+    {
+        throw new NotImplementedException();
     }
 }
