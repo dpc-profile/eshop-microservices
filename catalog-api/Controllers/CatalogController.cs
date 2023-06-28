@@ -14,23 +14,21 @@ public class CatalogController : ControllerBase
     }
 
     //GET api/v1/[controller]/items
-    [HttpGet]
-    [Route("items")]
+    [HttpGet("items")]
     public async Task<IEnumerable<ProdutoModel>> GetAllProdutosAsync()
     {
         return await _produtoService.ExibirProdutosAsync();
     }
 
-    [HttpGet]
-    [Route("items/{id:int}")]
+    [HttpGet("items/{id}")]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<ProdutoModel>> ProdutoPorIdAsync(int id)
+    public async Task<IActionResult> ProdutoPorIdAsync(int id)
     {
         ProdutoModel? produto = await _produtoService.ExibirProdutoPorIdAsync(id);
 
         if (produto is null) return NotFound(new { Message = $"Produto com id {id} não encontrado."});
 
-        return produto;
+        return Ok(produto);
     }
 
     //POST api/v1/[controller]/items
@@ -46,10 +44,10 @@ public class CatalogController : ControllerBase
 
             int Id = await _produtoService.CriarProdutoAsync(produto);
 
-            return CreatedAtAction(
-                nameof(ProdutoPorIdAsync), 
-                new { Id }, 
-                produtoDto);
+            // Essa URI é temporária, até ser definido essa parte
+            string uri = CreateURI(Id, produtoDto.Nome);
+            
+            return Created(uri, produtoDto);
         }
         catch (Exception error)
         {
@@ -57,8 +55,8 @@ public class CatalogController : ControllerBase
         }
     }
 
-    public string CreateURI(int id, string nome)
+    public string CreateURI(int id, string? nome)
     {
-        return $"{id}/{nome}";
+        return $"produto/{id}/{nome}";
     }
 }
