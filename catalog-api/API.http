@@ -13,3 +13,9 @@ Content-Type: application/json
 
 ###
 GET http://127.0.0.1:5135/api/v1/Catalog/items
+
+###
+GET http://127.0.0.1:5135/api/v1/Catalog/items/1008
+
+###
+GET http://127.0.0.1:5135/api/v1/Catalog/items/-7

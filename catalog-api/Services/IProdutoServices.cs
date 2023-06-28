@@ -1,10 +1,12 @@
 namespace catalog_api.Services;
 public interface IProdutoServices
 {
-    public Task CriarProdutoAsync(ProdutoModel produto);
+    public Task<int> CriarProdutoAsync(ProdutoModel produto);
 
     public Task<List<ProdutoModel>> ExibirProdutosAsync();
 
-    public Task AdicionarImagemAsync();
+    public Task<ProdutoModel?> ExibirProdutoPorIdAsync(int id);
+
+    public Task AdicionarImagemAsync(int produtoId, ImagemModel imagem);
 
 }

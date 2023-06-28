@@ -12,8 +12,8 @@ public class APICallTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("/api/v1/Catalog/Ola")]
-    public async Task Testar_CatalogGet(string url)
+    [InlineData("/api/v1/Catalog/items")]
+    public async Task Testar_Gets_Endpoints(string url)
     {
         // Arrange
         var client = _factory.CreateClient();
@@ -29,8 +29,8 @@ public class APICallTests : IClassFixture<WebApplicationFactory<Program>>
     }
 
     [Theory]
-    [InlineData("/api/v1/Catalog/Ola")]
-    public async Task Testar_CatalogGet_Content(string url)
+    [InlineData("/api/v1/Catalog/items")]
+    public async Task Testar_CatalogGetItems_Content(string url)
     {
         // Arrange
         var client = _factory.CreateClient();
@@ -41,6 +41,6 @@ public class APICallTests : IClassFixture<WebApplicationFactory<Program>>
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         var content = await response.Content.ReadAsStringAsync();
-        Assert.NotNull(content);
+        Assert.NotNull(content);        
     }
 }

@@ -9,9 +9,9 @@ public class ProdutoServices : IProdutoServices
         _produtoRepository = produtoRepository;
     }
 
-    public async Task CriarProdutoAsync(ProdutoModel produto)
+    public async Task<int> CriarProdutoAsync(ProdutoModel produto)
     {
-        await _produtoRepository.AdicionarAsync(produto);
+        return await _produtoRepository.AdicionarAsync(produto);
     }
 
     public async Task<List<ProdutoModel>> ExibirProdutosAsync()
@@ -19,7 +19,12 @@ public class ProdutoServices : IProdutoServices
         return await _produtoRepository.BuscarProdutosAsync();
     }
 
-    public Task AdicionarImagemAsync()
+    public async Task<ProdutoModel?> ExibirProdutoPorIdAsync(int id)
+    {
+        return await _produtoRepository.BuscarProdutoPorIdAsync(id);
+    }
+
+    public Task AdicionarImagemAsync(int produtoId, ImagemModel imagem)
     {
         throw new NotImplementedException();
     }

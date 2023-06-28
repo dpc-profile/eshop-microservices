@@ -1,5 +1,5 @@
 namespace catalog_api.Dto;
-public class ImageDto
+public class ImagemDto
 {
     [Required(ErrorMessage = "A imagem precisa de um nome")]
     public string? Nome { get; init;}

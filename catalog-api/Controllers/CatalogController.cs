@@ -13,6 +13,7 @@ public class CatalogController : ControllerBase
         _mapper = mapper;
     }
 
+    //GET api/v1/[controller]/items
     [HttpGet]
     [Route("items")]
     public async Task<IEnumerable<ProdutoModel>> GetAllProdutosAsync()
@@ -20,28 +21,44 @@ public class CatalogController : ControllerBase
         return await _produtoService.ExibirProdutosAsync();
     }
 
+    [HttpGet]
+    [Route("items/{id:int}")]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ProdutoModel>> ProdutoPorIdAsync(int id)
+    {
+        ProdutoModel? produto = await _produtoService.ExibirProdutoPorIdAsync(id);
+
+        if (produto is null) return NotFound(new { Message = $"Produto com id {id} não encontrado."});
+
+        return produto;
+    }
+
     //POST api/v1/[controller]/items
     [Route("items")]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CriarProdutoAsync([FromBody] CreateProdutoDto produtoDto)
     {
         try
         {
-            // Popular um objeto do tipo ProdutoModel com as informações de produto
             ProdutoModel produto = _mapper.Map<ProdutoModel>(produtoDto);
 
-            // Chamar CriarProdutoAsync de ProdutoServices
-            await _produtoService.CriarProdutoAsync(produto);
+            int Id = await _produtoService.CriarProdutoAsync(produto);
 
-            // Cria a URI
-
-            // Passa a URI para o return CreatedAtAction
-            return Ok(produto.Nome);
+            return CreatedAtAction(
+                nameof(ProdutoPorIdAsync), 
+                new { Id }, 
+                produtoDto);
         }
         catch (Exception error)
         {
             return BadRequest(error);
         }
+    }
+
+    public string CreateURI(int id, string nome)
+    {
+        return $"{id}/{nome}";
     }
 }
