@@ -6,5 +6,5 @@ public class BancoContext : DbContext
     }
 
     public DbSet<ProdutoModel> Produto { get; set; }
-
+    public DbSet<ImagemModel> Imagem { get; set; }
 }

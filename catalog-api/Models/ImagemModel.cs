@@ -8,7 +8,7 @@ public class ImagemModel
 
     [ForeignKey(nameof(ProdutoModel))]
     [Column("ProdutoId")]
-    public int? ProdutoId { get; init;}
+    public int? ProdutoId { get; set;}
 
     [Required]
     public string? Nome { get; init;}

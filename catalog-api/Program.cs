@@ -23,6 +23,8 @@ public class Program
 
         builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
         builder.Services.AddScoped<IProdutoServices, ProdutoServices>();
+        builder.Services.AddScoped<IImagemRepository, ImagemRepository>();
+        builder.Services.AddScoped<IImagemServices, ImagemServices>();
 
         var app = builder.Build();
 

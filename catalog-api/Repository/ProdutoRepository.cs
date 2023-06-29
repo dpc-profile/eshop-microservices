@@ -27,8 +27,9 @@ public class ProdutoRepository : IProdutoRepository
         return await _bancoContext.Produto.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<List<ProdutoModel>> BuscarProdutosAsync()
+    public async Task<IEnumerable<ProdutoModel>> BuscarProdutosAsync()
     {
         return await _bancoContext.Produto.ToListAsync();
     }
+
 }

@@ -14,7 +14,7 @@ public class ProdutoServices : IProdutoServices
         return await _produtoRepository.AdicionarAsync(produto);
     }
 
-    public async Task<List<ProdutoModel>> ExibirProdutosAsync()
+    public async Task<IEnumerable<ProdutoModel>> ExibirProdutosAsync()
     {
         return await _produtoRepository.BuscarProdutosAsync();
     }
@@ -24,8 +24,4 @@ public class ProdutoServices : IProdutoServices
         return await _produtoRepository.BuscarProdutoPorIdAsync(id);
     }
 
-    public Task AdicionarImagemAsync(int produtoId, ImagemModel imagem)
-    {
-        throw new NotImplementedException();
-    }
 }
