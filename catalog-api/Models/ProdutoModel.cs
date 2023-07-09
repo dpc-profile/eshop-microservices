@@ -12,11 +12,8 @@ public class ProdutoModel
     [Required(ErrorMessage = "Descrição do produto necessário.")]
     public string? Descricao { get; init; }
 
-    [Required(ErrorMessage = "categoria do produto necessário.")]
+    [Required(ErrorMessage = "Categoria do produto necessário.")]
     public string? Categoria { get; init; }
-
-    [Required(ErrorMessage = "Imagem do produto necessário.")]
-    public List<ImagemModel>? Imagens { get; init; }
 
     [Required(ErrorMessage = "Quantidade do produto necessário.")]
     public int Quantidade { get; init; }
@@ -35,7 +32,6 @@ public class ProdutoModel
         Id = this.Id,
         Nome = this.Nome,
         Categoria = this.Categoria,
-        ImagemMiniatura = this.Imagens?.FirstOrDefault(),
         Quantidade = this.Quantidade,
         Preco = this.Preco,
         PrecoDesconto = this.PrecoDesconto,

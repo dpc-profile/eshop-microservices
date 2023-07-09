@@ -79,7 +79,7 @@ public class CatalogController : ControllerBase
             await _imagemServices.AdicionarImagemAsync(imagem);
 
             string uri = CreateURI(tipo: "imagem", id, imagemDto.Nome);
-            return Created(uri, imagem);
+            return Created(uri, imagemDto);
 
         }
         catch (Exception error)
